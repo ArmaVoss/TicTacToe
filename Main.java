@@ -151,6 +151,7 @@ public class Main {
     }
 
     public static void main(String[] args){
+        //main loop
         while(mainLoop == true){
             System.out.println("Hi Welcome to Tic Tac Toe");
             System.out.println("1. Play (1)");
@@ -162,19 +163,25 @@ public class Main {
                 int count = 0;
                 int elements = 0;
                 char[] arrayGame = Arrays.copyOf(arr, arr.length);
+
+                //game loop
                 while(gameNotOver){
+                    //if count has remainder 0, its player 1 turn
                     if(count % 2 == 0){
                         currentPlayer = 1;
                         System.out.println("Player 1");
                         if(!gameInputs(arrayGame)){
                             continue;
                         }
+                        else{
+                            elements++;
+                        }
                         PrintBoardGame(arrayGame);
                         if(checkWin(arrayGame)){
                             System.out.println("Player 1 Wins!");
                             gameNotOver = false; 
                         }
-                        elements++;
+             
                         if(elements == 9){
                             System.out.println("Game Over No Winner");
                             gameNotOver = false; 
@@ -187,12 +194,14 @@ public class Main {
                         if(!gameInputs(arrayGame)){
                             continue;
                         }
+                        else{
+                            elements++;
+                        }
                         PrintBoardGame(arrayGame);
                         if(checkWin(arrayGame)){
                             System.out.println("Player 2 Wins!");
                             gameNotOver = false; 
                         }
-                        elements++;
                         if(elements == 9){
                             System.out.println("Game Over No Winner");
                             gameNotOver = false; 
@@ -201,6 +210,7 @@ public class Main {
                     }
                 }
 
+                //asks user if they want to play game again
                 boolean isOver = true;
                 System.out.print("Do you want to play again (y/n): ");
                 while(isOver){
@@ -219,6 +229,7 @@ public class Main {
                 }
        
             }
+            //tells player instructions on how to play
             else if(choice == 2){
                 System.out.println();
                 System.out.println("1st input is row, 2nd is column");
@@ -227,6 +238,7 @@ public class Main {
                 System.out.println();
                 System.out.println();
             }
+            //exits game
             else if(choice == 3){
                 mainLoop = false;
             }
